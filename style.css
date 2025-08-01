@@ -236,13 +236,6 @@ textarea {
   margin-top: 6px;
   border-radius: 8px;
 }
-.thumb {
-  max-width: 100px;
-  max-height: 100px;
-  display: block;
-  margin-top: 6px;
-  border-radius: 8px;
-}
 .meta {
   font-size: 0.9em;
   color: #666;
@@ -255,6 +248,7 @@ textarea {
   margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
+  cursor: pointer;
 }
 .btn {
   padding: 6px 10px;
