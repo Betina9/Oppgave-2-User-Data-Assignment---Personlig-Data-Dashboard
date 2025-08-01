@@ -3,135 +3,87 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Cosplay Dashbord</title>
   </head>
   <body>
+    <header>
+      <h1>Cosplay Dashboard</h1>
+      <p>Lagre cosplay-prosjekter – alt i localStorage.</p>
+    </header>
+
     <div class="container">
+      <!-- Venstre: Skjema -->
       <section class="card">
         <h2>Legg til / Rediger prosjekt</h2>
         <form id="cosplay-form">
           <input type="hidden" id="id" />
           <div class="row">
-            <div>
-              <label for="character">Karakter</label>
-              <input id="character" placeholder="f.eks. Zelda" required />
-            </div>
-            <div>
-              <label for="series">Serie/Spill/Film</label>
-              <input id="series" placeholder="The Legend of Zelda" />
-            </div>
+            <label for="character">Karakter</label>
+            <input id="character" required />
           </div>
           <div class="row">
-            <div>
-              <label for="category">Kategori</label>
-              <select id="category">
-                <option value="armor">Rustning</option>
-                <option value="sewing">Søm</option>
-                <option value="prop">Rekvisitt</option>
-                <option value="wig">Parrykk</option>
-                <option value="makeup">Sminke</option>
-                <option value="other">Annet</option>
-              </select>
-            </div>
-            <div>
-              <label for="status">Status</label>
-              <select id="status">
-                <option value="planned">Planlagt</option>
-                <option value="in-progress">Pågår</option>
-                <option value="completed">Ferdig</option>
-              </select>
-            </div>
+            <label for="series">Serie/Spill/Film</label>
+            <input id="series" />
           </div>
           <div class="row">
-            <div>
-              <label for="hours">Timer brukt</label>
-              <input
-                id="hours"
-                type="number"
-                min="0"
-                step="0.5"
-                placeholder="0"
-              />
-            </div>
-            <div>
-              <label for="cost">Kostnad (NOK)</label>
-              <input id="cost" type="number" min="0" step="1" placeholder="0" />
-            </div>
+            <label for="category">Kategori</label>
+            <input id="category" />
           </div>
           <div class="row">
-            <div>
-              <label for="date">Dato</label>
-              <input id="date" type="date" />
-            </div>
-            <div>
-              <label for="favorite">Favoritt?</label>
-              <select id="favorite">
-                <option value="false">Nei</option>
-                <option value="true">Ja</option>
-              </select>
-            </div>
+            <label for="status">Status</label>
+            <input id="status" />
           </div>
-          <div class="row-1">
-            <div>
-              <label for="materials">Materialer (kommaseparert)</label>
-              <input id="materials" placeholder="skum, worbla, stoff, maling" />
-            </div>
+          <div class="row">
+            <label for="hours">Timer brukt</label>
+            <input id="hours" type="number" min="0" step="0.5" />
           </div>
-          <div style="display: flex; gap: 8px; margin-top: 12px">
+          <div class="row">
+            <label for="cost">Kostnad (kr)</label>
+            <input id="cost" type="number" min="0" step="1" />
+          </div>
+          <div class="row">
+            <label for="date">Dato</label>
+            <input id="date" type="date" />
+          </div>
+          <div class="row">
+            <label for="materials">Materialer (kommaseparert)</label>
+            <input id="materials" />
+          </div>
+          <div class="row">
+            <label for="image">Referansebilde (valgfritt)</label>
+            <input id="image" type="file" accept="image/*" />
+          </div>
+          <div style="margin-top: 12px">
             <button class="btn" type="submit">Lagre</button>
-            <button class="btn ghost" type="button" id="reset-form">
+            <button class="btn" type="button" id="reset-form">
               Tøm skjema
             </button>
           </div>
         </form>
       </section>
+
+      <!-- Høyre: Liste -->
       <section class="card">
         <h2>Dine prosjekter</h2>
-        <div class="toolbar" style="margin-bottom: 12px">
-          <div class="group">
-            <label for="filter-category">Filter kategori</label>
-            <select id="filter-category">
-              <option value="all">Alle</option>
-              <option value="armor">Rustning</option>
-              <option value="sewing">Søm</option>
-              <option value="prop">Rekvisitt</option>
-              <option value="wig">Parrykk</option>
-              <option value="makeup">Sminke</option>
-              <option value="other">Annet</option>
-            </select>
-          </div>
-          <div class="group">
-            <label for="filter-status">Filter status</label>
-            <select id="filter-status">
-              <option value="all">Alle</option>
-              <option value="planned">Planlagt</option>
-              <option value="in-progress">Pågår</option>
-              <option value="completed">Ferdig</option>
-            </select>
-          </div>
-          <div class="group">
-            <label for="sort-by">Sorter</label>
-            <select id="sort-by">
-              <option value="date-desc">Dato ↓ (nyest)</option>
-              <option value="date-asc">Dato ↑ (eldst)</option>
-              <option value="character-asc">Karakter A→Å</option>
-              <option value="character-desc">Karakter Å→A</option>
-              <option value="hours-desc">Timer ↓</option>
-              <option value="hours-asc">Timer ↑</option>
-              <option value="cost-desc">Kostnad ↓</option>
-              <option value="cost-asc">Kostnad ↑</option>
-            </select>
-          </div>
-          <div class="group">
-            <button class="btn secondary" id="seed">Legg inn eksempler</button>
-            <button class="btn danger" id="clear-all">Slett alt</button>
-          </div>
+        <div class="toolbar">
+          <label for="sort-by">Sorter:</label>
+          <select id="sort-by">
+            <option value="date-desc">Dato (nyest først)</option>
+            <option value="date-asc">Dato (eldst først)</option>
+            <option value="character-asc">Karakter A–Å</option>
+            <option value="character-desc">Karakter Å–A</option>
+            <option value="hours-desc">Timer mest</option>
+            <option value="hours-asc">Timer minst</option>
+            <option value="cost-desc">Kostnad høyest</option>
+            <option value="cost-asc">Kostnad lavest</option>
+          </select>
+          <span
+            id="summary"
+            style="margin-left: 20px; font-size: 0.9em; color: #555"
+          ></span>
         </div>
-
         <div id="list" class="list"></div>
-
-        <h2 style="margin-top: 16px">Statistikk</h2>
-        <div class="stats" id="stats"></div>
       </section>
     </div>
   </body>
