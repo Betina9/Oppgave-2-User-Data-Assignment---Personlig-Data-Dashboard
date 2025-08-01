@@ -1,7 +1,7 @@
 :root {
   --bg: #0b1020; /* bakgrunn */
   --panel: #121a35; /* panel/kort */
-  --panel-light: #1b2545; /* litt lysere panel */
+  --panel-light: #374151; /* litt lysere panel */
   --text: #e2e8f0; /* hovedtekst */
   --muted: #94a3b8; /* dempet tekst */
   --accent: #38bdf8; /* cyan */
