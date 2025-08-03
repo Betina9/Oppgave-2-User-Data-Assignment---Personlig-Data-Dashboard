@@ -71,7 +71,7 @@ form .row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 form .row-1 {
   display: grid;
@@ -154,10 +154,10 @@ textarea {
   border: 1px solid #1e293b;
   border-radius: 12px;
   padding: 12px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 10px;
-  align-items: start;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
   color: var(--text);
   font-size: 15px;
 }
@@ -240,9 +240,8 @@ textarea {
 }
 
 .thumb {
-  max-width: 100px;
-  max-height: 100px;
-  display: block;
-  margin-top: 6px;
+  width: 120px;
+  height: auto;
   border-radius: 8px;
+  object-fit: cover;
 }
