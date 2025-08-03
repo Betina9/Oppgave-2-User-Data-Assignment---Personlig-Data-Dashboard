@@ -153,16 +153,16 @@ textarea {
   background: var(--panel-light);
   border: 1px solid #1e293b;
   border-radius: 12px;
-  padding: 12px;
+  padding: 16px;
   display: flex;
   justify-content: space-between;
-  gap: 16px;
-  align-items: center;
+  align-items: flex-start;
+  gap: 20px;
   color: var(--text);
   font-size: 15px;
 }
 .item h3 {
-  margin: 0;
+  margin: 0 0 6px;
   font-size: 16px;
   color: #f1f5f9;
 }
@@ -182,25 +182,13 @@ textarea {
   margin-right: 4px;
 }
 
-.chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  padding: 3px 7px;
-  border-radius: 999px;
-  border: 1px solid #334155;
-  background: var(--bg);
-  color: var(--muted);
-}
-.chip.fav {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
 .right {
   display: flex;
-  gap: 6px;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 100%;
+  gap: 8px;
 }
 
 .stats {
@@ -240,8 +228,8 @@ textarea {
 }
 
 .thumb {
-  width: 120px;
-  height: auto;
+  max-width: 140px;
+  max-height: 140px;
   border-radius: 8px;
-  object-fit: cover;
+  object-fit: contain;
 }
