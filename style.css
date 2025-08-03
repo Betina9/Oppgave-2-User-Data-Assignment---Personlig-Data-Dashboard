@@ -1,13 +1,14 @@
 :root {
-  --bg: #0b1020; /* bakgrunn */
-  --panel: #121a35; /* panel/kort */
-  --panel-light: #374151; /* litt lysere panel */
-  --text: #e2e8f0; /* hovedtekst */
-  --muted: #94a3b8; /* dempet tekst */
-  --accent: #38bdf8; /* cyan */
-  --accent-2: #a78bfa; /* lilla */
-  --danger: #ef4444; /* rød */
-  --ok: #22c55e; /* grønn */
+  --bg: #0b1020;
+  --panel: #121a35;
+  --panel-light: #374151;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --label: #e0e7ff;
+  --accent: #38bdf8;
+  --accent-2: #a78bfa;
+  --danger: #ef4444;
+  --ok: #22c55e;
 }
 
 * {
@@ -66,16 +67,17 @@ header p {
   color: #f8fafc;
 }
 
-/* Skjema */
 form .row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
+  margin-bottom: 20px;
 }
 form .row-1 {
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
+  margin-bottom: 16px;
 }
 label {
   display: block;
@@ -130,7 +132,6 @@ textarea {
   cursor: not-allowed;
 }
 
-/* Toolbar */
 .toolbar {
   display: flex;
   gap: 10px;
@@ -144,7 +145,6 @@ textarea {
   font-size: 13px;
 }
 
-/* Liste */
 .list {
   display: grid;
   gap: 10px;
@@ -158,17 +158,28 @@ textarea {
   grid-template-columns: 1fr auto;
   gap: 10px;
   align-items: start;
+  color: var(--text);
+  font-size: 15px;
 }
 .item h3 {
   margin: 0;
-  font-size: 15px;
+  font-size: 16px;
+  color: #f1f5f9;
 }
 .meta {
-  color: var(--muted);
-  font-size: 12px;
+  color: #cbd5e1;
+  font-size: 15px;
   display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 4px;
+}
+.meta span {
+  display: block;
+}
+.meta span strong {
+  color: var(--label);
+  font-weight: 500;
+  margin-right: 4px;
 }
 
 .chip {
@@ -192,7 +203,6 @@ textarea {
   gap: 6px;
 }
 
-/* Statistikk */
 .stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -215,7 +225,6 @@ textarea {
   color: var(--muted);
 }
 
-/* Empty */
 .empty {
   text-align: center;
   padding: 30px;
@@ -229,37 +238,11 @@ textarea {
     grid-template-columns: 1fr;
   }
 }
+
 .thumb {
   max-width: 100px;
   max-height: 100px;
   display: block;
   margin-top: 6px;
   border-radius: 8px;
-}
-.meta {
-  font-size: 0.9em;
-  color: #666;
-  margin-top: 4px;
-}
-.item {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 10px;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  cursor: pointer;
-}
-.btn {
-  padding: 6px 10px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-.btn.danger {
-  background: #e11;
-  color: #fff;
-}
-.toolbar {
-  margin: 10px 0;
 }
