@@ -1,4 +1,10 @@
-Jeg lagde et dashbord hvor en kan legge inn informasjon om et cosplay en ønsker/ holder på å lage. Underveis kan man endre informasjonen. Så om man har brukt mer penger eller mer tid på cosplayet så kan dette endres. 
-Om jeg skulle ha laget det om igjen så ville jeg ha hatt litt mer informasjon som cosplayeren kan legge inn. Som for eks, mer informasjon ang materialene, som spesifikkt hvilket tekstiler som skal kjøpes, hvilken butikk en får det fra, hvor ofte i uken man skal bruke tid på å lage det for eks.
-Jeg kunne også ha laget en egen mappe hvor brukeren kunne ha lagt inn progress bilder av cosplayet. Så om vedkommende ønsker å gå opp i en konkurranse så ligger progress bilder lett tilgjengelig.
-Når det kommer til koden, så har jeg fått litt hjelp av chat GPT. Men vi har samarbeidet godt og jeg har fått de kodene jeg ønsket. Jeg er fortsatt ny på koder i javascript, men jeg klarer å lese hva kodene betyr.
+Jeg lagde et dashbord hvor en kan legge inn informasjon om et cosplay en ønsker/ holder på å lage. Underveis kan man endre informasjonen. Så om man har brukt mer penger eller mer tid på cosplayet så kan dette endres. Informasjon som kan legges inn er: navn, serie, status, timer brukt, kostnad, dato, materialer og et referansebilde.
+For å redigere teksten på et allerede lagret prosjekt så trykker du på prosjekt- kortet og infoen vil komme opp i venstre felt. Trykk inn det du vil endre på og trykk lagre. Nå skal prosjektet være oppdatert.
+Du kan enkelt slette et prosjekt ved å trykke på den røde knappen "slett". Trykk på den og prosjektet forsvinner.
+Trykk på sorter knappen over prosjektene for å velge hvilken rekkefølge prosjektene skal sorteres i. Her kan du velge mellom: Dato (eldst/nyest), Karakternavn (A–Å / Å–A), Timer brukt, Kostnad.
+
+
+Filstruktur:
+index.html         // HTML-struktur
+style.css          // Design og layout
+script.js          // All logikk og interaktivitet
