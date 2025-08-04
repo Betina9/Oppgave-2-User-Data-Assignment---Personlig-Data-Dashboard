@@ -1,12 +1,18 @@
+//Lokal lagring:
 const STORAGE_KEY = "cosplay-projects-v1";
+// Her lager vi navnet på hva nøkkelen skal hete i localStorage.
 const getAll = () => JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+//Denne henter alle lagrede prosjekter fra localStorage.
 const saveAll = (arr) => localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+//Lagrer en array av prosjekter til localStorage.
 const uid = () => Math.random().toString(36).slice(2, 9);
+//Lager en unik ID for hvert prosjekt.
 
 const form = document.getElementById("cosplay-form");
 const resetFormBtn = document.getElementById("reset-form");
 const sortBy = document.getElementById("sort-by");
 const summary = document.getElementById("summary");
+//Disse henter elementer fra HTML slik at vi kan bruke dem i koden (skjema, knapp, sortering, oversikt).
 const el = {
   id: document.getElementById("id"),
   character: document.getElementById("character"),
@@ -19,8 +25,10 @@ const el = {
   image: document.getElementById("image"),
   list: document.getElementById("list"),
 };
+//Samler alle input-feltene i ett objekt for enkel tilgang.
 
 function elCreate(tag, props = {}, children = []) {
+  //En hjelpemetode for å lage HTML-elementer med attributter, tekst og event listeners. Brukes til å bygge kortene.
   const node = document.createElement(tag);
   for (const [k, v] of Object.entries(props)) {
     if (k === "class") node.className = v;
@@ -42,12 +50,13 @@ function elCreate(tag, props = {}, children = []) {
 function clearNode(node) {
   while (node.firstChild) node.removeChild(node.firstChild);
 }
+//Sletter alt innhold fra et HTML-element.
 
 function renderList() {
+  //Viser alle prosjektene i høyre felt, og sorterer valgt inni de forskjellige feltene.
   clearNode(el.list);
   const frag = document.createDocumentFragment();
   let data = getAll();
-
   // sort()
   data.sort((a, b) => {
     switch (sortBy.value) {
@@ -95,6 +104,7 @@ function renderList() {
 }
 
 function toItemNode(item) {
+  //Lager selve kortet i høyre panel.
   const {
     id,
     character,
@@ -147,12 +157,14 @@ function toItemNode(item) {
 }
 
 function onDeleteById(id) {
+  //Denne sletter prosjektet fra listen og oppdaterer localStorage.
   const next = getAll().filter((x) => x.id !== id);
   saveAll(next);
   renderList();
 }
 
 function onEditById(id) {
+  //Når vi klikker på et prosjektkort, fylles infoen inn i skjemaet for redigering til venstre.
   const item = getAll().find((x) => x.id === id);
   if (!item) return;
   el.id.value = item.id;
@@ -167,6 +179,7 @@ function onEditById(id) {
 }
 
 form.addEventListener("submit", (e) => {
+  //Når vi trykker på lagre vil den enten legge til et nytt prosjektkort eller endre det i localStorage.
   e.preventDefault();
   const idVal = el.id.value || uid();
   const file = el.image.files[0];
@@ -204,9 +217,12 @@ form.addEventListener("submit", (e) => {
 });
 
 resetFormBtn.addEventListener("click", () => {
+  //Når vi trykker "tøm skjema"- knappen så vil alle skjemaspalter tømmes.
   form.reset();
   el.id.value = "";
 });
 sortBy.addEventListener("change", renderList);
+//Når vi velger sortering, oppdateres listen automatisk.
 
 renderList();
+//Viser prosjektene første gang siden lastes.
